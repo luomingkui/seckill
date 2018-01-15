@@ -8,7 +8,7 @@ CREATE PROCEDURE excuteSeckill(IN fadeSeckillId INT,IN fadeUserPhone VARCHAR (15
   BEGIN
     DECLARE insert_count INT DEFAULT 0;
     START TRANSACTION ;
-    INSERT ignore success_kill(seckill_id,user_phone,status,create_time) VALUES(fadeSeckillId,fadeUserPhone,0,fadeKillTime);  --先插入购买明细
+    INSERT ignore success_killed(seckill_id,user_phone,state,create_time) VALUES(fadeSeckillId,fadeUserPhone,0,fadeKillTime);  --先插入购买明细
     SELECT ROW_COUNT() INTO insert_count;
     IF(insert_count = 0) THEN
       ROLLBACK ;
